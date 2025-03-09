@@ -45,6 +45,15 @@ class Punto:
         return 'Cuadrante 3'
 
 
+    def __str__(self):
+        """
+        >>> P = Punto(1.0, 2.0)
+        >>> print(P)
+        (1.0,2.0)
+        """
+        return f'({self.__x},{self.y})'
+
+
 
 
 if __name__ == '__main__':
