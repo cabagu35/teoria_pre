@@ -1,0 +1,21 @@
+from Punto import *
+from Recta2D import *
+
+class Segmento(Recta):
+
+    def longitud(self):
+        """
+        >>> P1 = Punto(1.0, 1.0)
+        >>> P2 = Punto(2.0, 1.0)
+        >>> S = Segmento(P1, P2)
+        >>> S.longitud()
+        1.0
+        """
+        return self.P1.distancia(self.P2)
+    
+
+if __name__ == '__main__':
+    import doctest
+
+
+    print(doctest.testmod(verbose=True))
