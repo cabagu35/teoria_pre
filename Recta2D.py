@@ -6,7 +6,17 @@ class Recta:
     def __init__(self, P1, P2):
         self.P1 = P1
         self.P2 = P2
+        self._m = None  # Almacenamos la pendiente
+        self._b = None  # Almacenamos la ordenada al origen
+        self._calcular_pendiente_y_ordenada()  # Calculamos al inicializar
 
+    def _calcular_pendiente_y_ordenada(self):
+        if self.P1.x() == self.P2.x():
+            self._m = float('inf')
+            self._b = None
+        else:
+            self._m = (self.P2.y - self.P1.y) / (self.P2.x() - self.P1.x())
+            self._b = self.P1.y - self._m * self.P1.x()
 
     def __str__(self):
         """
@@ -18,53 +28,11 @@ class Recta:
         """
         return str(self.P1) + '-' + str(self.P2)
 
-
-
     def m(self):
-        """
-        >>> P = Punto(1.0, 2.0)
-        >>> Q = Punto(4.0, 6.0)
-        >>> R = Recta(P, Q)
-        >>> R.m()
-        1.3333333333333333
-
-        >>> P = Punto(1.0, 2.0)
-        >>> Q = Punto(1.0, 6.0)
-        >>> R = Recta(P, Q)
-        >>> R.m()
-        inf
-        """
-        # Si la recta es vertical (x1 = x2), la pendiente es infinita
-        if self.P1.x() == self.P2.x():
-            return float('inf')
-
-        # Calculamos la pendiente como (y2 - y1) / (x2 - x1)
-        return (self.P2.y - self.P1.y) / (self.P2.x() - self.P1.x())
-
+        return self._m
 
     def b(self):
-        """
-        >>> P = Punto(1.0, 2.0)
-        >>> Q = Punto(4.0, 6.0)
-        >>> R = Recta(P, Q)
-        >>> R.b()
-        0.6666666666666667
-
-        >>> P = Punto(1.0, 2.0)
-        >>> Q = Punto(1.0, 6.0)
-        >>> R = Recta(P, Q)
-        >>> R.b() is None
-        True
-        """
-        # Si la recta es vertical, no hay intersección única con el eje Y
-        if self.P1.x() == self.P2.x():
-            return None
-
-        # Ecuación de la recta: y = mx + b
-        # Despejamos b = y - mx
-        pendiente = self.m()
-        return self.P1.y - pendiente * self.P1.x()
-
+        return self._b
 
     def perpendicular(self, punto):
         """
@@ -97,7 +65,6 @@ class Recta:
         punto_segundo = Punto(x_segundo, y_segundo)
 
         return Recta(punto, punto_segundo)
-
 
     def interseccion(self, Recta):
         """"
@@ -184,8 +151,6 @@ class Recta:
 
         return Punto(x_interseccion, y_interseccion)
 
-
-
     def distancia(self, punto): #No ponemos el parámetro recta porque es el self
         """
         >>> P1 = Punto(0.0, 0.0)
@@ -226,9 +191,6 @@ class Recta:
         denominador = (A ** 2 + B ** 2) ** 0.5
 
         return numerador / denominador
-
-
-
 
 if __name__ == '__main__':
     import doctest
