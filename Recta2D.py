@@ -15,6 +15,8 @@ class Recta:
         (1.0,2.0)-(4.0,2.0)
         """
         return str(self.P1) + '-' + str(self.P2)
+    #holis
+    
 
 
     def m(self):

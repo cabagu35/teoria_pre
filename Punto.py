@@ -27,6 +27,7 @@ class Punto:
         2.0
         """
         return ((self.__x-otro.__x)**2+(self.y-otro.y)**2)**0.5
+    
 
     def cuadrante(self):
         """
