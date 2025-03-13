@@ -1,3 +1,5 @@
+ #Prueba de que se ha commited y pusheado bien en GitHub
+
 from Punto import * #poniendo asterisco nos sirve para no tener que llamar la función Punto cada vez ej. Punto.Punto(1.0, 2.0)
 
 class Recta:
