@@ -1,4 +1,4 @@
-from Punto_1 import *
+from Punto import *
 
 class Recta:
     def __init__(self, P1, P2=Punto(0.0, 0.0)):

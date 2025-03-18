@@ -1,4 +1,4 @@
-from Recta_1 import *
+from Recta import *
 
 class Segmento(Recta):
     def longitud(self):
